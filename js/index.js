@@ -117,6 +117,13 @@ function checkCookie (value) {
   }
   return null
 }
+function checkMobile () {
+  if (window.screen.width < 768) {
+    return true
+  } else {
+    return false
+  }
+}
 const config = {
   baseUrl,
   apiHost,
@@ -131,7 +138,6 @@ const config = {
   getCookie,
   checkCookie,
   compare,
-  rearrangeVotes,
-  salonList
+  checkMobile
 }
 export default config
