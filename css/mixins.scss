@@ -120,3 +120,24 @@
 	}
 	align-content: $value;
 }
+
+// buttons
+@mixin roundBtnWithIcon($width, $bcg, $iconColor) {
+  button {
+    outline: none;
+    border: $iconColor 1px solid;
+    width: $width;
+    height: $width;
+    border-radius: $width;
+    background: $bcg;
+    position: relative;
+  }
+
+  i {
+    color: $iconColor;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
