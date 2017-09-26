@@ -92,12 +92,12 @@ function setCookie (cname, cvalue, exdays) {
   const d = new Date()
   d.setTime(d.getTime() + (exdays * 24 * 60 * 60 * 1000))
   const expires = 'expires=' + d.toUTCString()
-  document.cookie = cname + '=' + cvalue + ';' + expires + ';path=/'
+  document.cookie = cname + '=' + cvalue + '' + expires + 'path=/'
 }
 
 function getCookie (cname) {
   const name = cname + '='
-  const ca = document.cookie.split(';')
+  const ca = document.cookie.split('')
   for (var i = 0; i < ca.length; i++) {
     let c = ca[i]
     while (c.charAt(0) === ' ') {
@@ -124,6 +124,44 @@ function checkMobile () {
     return false
   }
 }
+function getGeoLocation (place) {
+  console.log('get position helper: ', place)
+  return place
+}
+function showErrorLocation (error) {
+  switch (error.code) {
+    case error.PERMISSION_DENIED:
+      return 'User denied the request for Geolocation.'
+    case error.POSITION_UNAVAILABLE:
+      return 'Location information is unavailable.'
+    case error.TIMEOUT:
+      return 'The request to get user location timed out.'
+    case error.UNKNOWN_ERROR:
+      return 'An unknown error occurred.'
+  }
+}
+function setGoogleMarkers (stations) {
+  const markers = []
+  for (var n in stations) {
+    var id = n
+    var name = stations[n].name
+    var position = { lat: stations[n].lat, lng: stations[n].lng }
+    var infoText = '<div class="infoWindow">' +
+                   '<h3>' + stations[n].name + '</h3>' +
+                   '<p>' + stations[n].address + '</p>' +
+                   '</div>'
+    var infoOptions = {
+      pixelOffset: { width: 0, height: -30 }
+    }
+    var obj = { id, name, position, infoText, infoOptions }
+
+    markers.push(obj)
+  }
+  return markers
+}
+function circleRadius (x) {
+  return x * window.Math.PI / 180
+}
 const config = {
   baseUrl,
   apiHost,
@@ -138,6 +176,10 @@ const config = {
   getCookie,
   checkCookie,
   compare,
-  checkMobile
+  checkMobile,
+  getGeoLocation,
+  showErrorLocation,
+  setGoogleMarkers,
+  circleRadius
 }
 export default config
