@@ -162,6 +162,13 @@ function setGoogleMarkers (stations) {
 function circleRadius (x) {
   return x * window.Math.PI / 180
 }
+function addZero (value) {
+  if (value < 10) {
+    return '0' + value
+  } else {
+    return value
+  }
+}
 const config = {
   baseUrl,
   apiHost,
@@ -180,6 +187,7 @@ const config = {
   getGeoLocation,
   showErrorLocation,
   setGoogleMarkers,
-  circleRadius
+  circleRadius,
+  addZero
 }
 export default config
