@@ -156,3 +156,60 @@
     }
   }
 }
+
+// padding mixin
+@mixin padding($values...) {    
+  @each $var in $values {
+      padding: #{$var};
+  }
+}
+// margin mixin
+@mixin margin($values...) {
+  @each $var in $values {
+    margin: #{$var};
+  }
+}
+// media queries mixins
+@mixin xxsmall() {
+  @media only screen and (max-width: 320px) {
+    @content;
+  }
+}
+@mixin xsmall() {
+  @media only screen and (max-width: 424px) {
+    @content;
+  }
+}
+@mixin small() {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+// up
+@mixin small-and-up() {
+  @media only screen and (min-width: 768px) {
+    @content;
+  }
+}
+
+// colors mixins
+$couleurs: (
+  primary: #3fa9f5,
+  success: #13ce66,
+  warning: #c2c21e,
+  danger: #ff4942,
+  info: #50bfff,
+  white: #ffffff
+);
+
+@each $couleur in $couleurs {
+  .text--#{nth($couleur, 1)} {
+    color: nth($couleur, 2)
+  }
+  .bg--#{nth($couleur, 1)} {
+    background-color: nth($couleur, 2)
+  }
+  .border--#{nth($couleur, 1)} {
+    border-color: nth($couleur, 2)
+  }
+}
