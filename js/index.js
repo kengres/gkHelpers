@@ -169,6 +169,11 @@ function addZero (value) {
     return value
   }
 }
+function delay (fx, millsec) {
+  setTimeout(function () {
+    fx()
+  }, millsec)
+}
 const config = {
   baseUrl,
   apiHost,
@@ -188,6 +193,7 @@ const config = {
   showErrorLocation,
   setGoogleMarkers,
   circleRadius,
-  addZero
+  addZero,
+  delay
 }
 export default config
