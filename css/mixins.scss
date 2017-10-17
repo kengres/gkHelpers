@@ -200,7 +200,8 @@ $couleurs: (
   danger: #ff4942,
   info: #50bfff,
   white: #ffffff,
-  black: #000000
+  black: #000000,
+  grey: #979797
 );
 
 @each $couleur in $couleurs {
