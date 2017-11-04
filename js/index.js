@@ -8,6 +8,13 @@ if (process.env.NODE_ENV === 'production') {
 
 const apiHost = baseUrl + '/api'
 
+export function addZero (value) {
+  if (value < 10) {
+    return '0' + value
+  } else {
+    return value
+  }
+}
 function shuffleArray (arr) {
   if (arr) {
     for (var i = arr.length - 1; i > 0; i--) {
@@ -162,38 +169,34 @@ function setGoogleMarkers (stations) {
 function circleRadius (x) {
   return x * window.Math.PI / 180
 }
-function addZero (value) {
-  if (value < 10) {
-    return '0' + value
-  } else {
-    return value
-  }
-}
 function delay (fx, millsec) {
   setTimeout(function () {
     fx()
   }, millsec)
 }
+export function testImport (obj) {
+  return obj
+}
 const config = {
-  baseUrl,
+  arrayDiff,
   apiHost,
-  shuffleArray,
+  baseUrl,
   choose,
   checkLocalStorage,
-  divideArray,
   chartDataInit,
-  makeRandomString,
-  arrayDiff,
-  setCookie,
-  getCookie,
   checkCookie,
-  compare,
   checkMobile,
-  getGeoLocation,
-  showErrorLocation,
-  setGoogleMarkers,
   circleRadius,
-  addZero,
-  delay
+  compare,
+  delay,
+  divideArray,
+  getCookie,
+  getGeoLocation,
+  makeRandomString,
+  setCookie,
+  setGoogleMarkers,
+  showErrorLocation,
+  shuffleArray,
+  testImport
 }
 export default config
