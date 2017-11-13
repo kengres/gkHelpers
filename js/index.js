@@ -124,7 +124,7 @@ function checkCookie (value) {
   }
   return null
 }
-function checkMobile () {
+export function checkMobile () {
   if (window.screen.width < 768) {
     return true
   } else {
@@ -147,7 +147,7 @@ function showErrorLocation (error) {
       return 'An unknown error occurred.'
   }
 }
-function setGoogleMarkers (stations) {
+export function setGoogleMarkers (stations) {
   const markers = []
   for (var n in stations) {
     var id = n
@@ -166,7 +166,7 @@ function setGoogleMarkers (stations) {
   }
   return markers
 }
-function circleRadius (x) {
+export function circleRadius (x) {
   return x * window.Math.PI / 180
 }
 function delay (fx, millsec) {
@@ -186,7 +186,6 @@ const config = {
   chartDataInit,
   checkCookie,
   checkMobile,
-  circleRadius,
   compare,
   delay,
   divideArray,
