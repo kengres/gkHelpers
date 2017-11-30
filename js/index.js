@@ -177,6 +177,10 @@ function delay (fx, millsec) {
 export function testImport (obj) {
   return obj
 }
+export function toLocalISOString (date) {
+  var tzoffset = (new Date()).getTimezoneOffset() * 60000 // offset in milliseconds
+  return (new Date(date - tzoffset)).toISOString().slice(0, -5)
+}
 const config = {
   arrayDiff,
   apiHost,
