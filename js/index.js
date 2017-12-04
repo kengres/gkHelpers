@@ -175,12 +175,10 @@ export function checkLocalStorage () {
   if (typeof (Storage) !== 'undefined') {
     const test = 'test'
     try {
-      console.log('check if local...')
       window.localStorage.setItem(test, test)
       window.localStorage.removeItem(test)
       return true
     } catch (e) {
-      console.log('check for local failed...')
       return false
     }
   } else {
