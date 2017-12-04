@@ -37,16 +37,6 @@ function choose (choices) {
   var index = Math.floor(Math.random() * choices.length)
   return choices[index]
 }
-function checkLocalStorage () {
-  const test = 'test'
-  try {
-    window.localStorage.setItem(test, test)
-    window.localStorage.removeItem(test)
-    return true
-  } catch (e) {
-    return false
-  }
-}
 function makeRandomString () {
   let randomString = ''
   const alphabet = 'abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789'
@@ -181,12 +171,27 @@ export function toLocalISOString (date) {
   var tzoffset = (new Date()).getTimezoneOffset() * 60000 // offset in milliseconds
   return (new Date(date - tzoffset)).toISOString().slice(0, -5)
 }
+export function checkLocalStorage () {
+  if (typeof (Storage) !== 'undefined') {
+    const test = 'test'
+    try {
+      console.log('check if local...')
+      window.localStorage.setItem(test, test)
+      window.localStorage.removeItem(test)
+      return true
+    } catch (e) {
+      console.log('check for local failed...')
+      return false
+    }
+  } else {
+    return false
+  }
+}
 const config = {
   arrayDiff,
   apiHost,
   baseUrl,
   choose,
-  checkLocalStorage,
   chartDataInit,
   checkCookie,
   checkMobile,
